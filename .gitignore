@@ -11,3 +11,12 @@ Thumbs.db
 
 # 로그
 *.log
+
+# 컴파일된 바이너리 (빌드 산출물)
+02-graple-story/graple_story_1
+02-graple-story/graple_story_2
+*_hacked
+*.o
+*.out
+in.txt
+cmds.gdb
