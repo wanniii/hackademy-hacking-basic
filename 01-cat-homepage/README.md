@@ -46,9 +46,9 @@ curl -s http://localhost:8000/        # 또는 브라우저에서 http://localho
 - [x] 1. HTML 로그인 화면 (`1_html_web/`)
 - [x] 2. 엔드포인트 / 하이퍼링크 (`2_endpoint_login/`)
 - [x] 3. form 로그인 + **Broken Access Control** 공격 → [writeup](exploits/03_broken_access_control.md)
-- [ ] 4. Cookie 로그인 / Cookie Poisoning
-- [ ] 5. Cookie 인증 / 추측 가능한 쿠키값
-- [ ] 6. Brute Force (requests.py / Burp Suite)
+- [x] 4. Cookie 로그인 + **Client-side Cookie Poisoning** → [writeup](exploits/04_cookie_poisoning.md)
+- [x] 5. Cookie 인증 (추측 가능한 쿠키값) → [writeup](exploits/05_bruteforce_cookie.md)
+- [x] 6. **Brute Force** (Python PoC) → [06_cookie_buster.py](exploits/06_cookie_buster.py)
 - [ ] 7. Session / Session Hijacking
 - [ ] 8. Database / SQL Injection / 방어
 
@@ -77,3 +77,14 @@ header / form(username·password·submit) / footer 로 구성된 정적 로그�
 - **B. OR 로직 결함** — 인증 조건이 `아이디==valid OR 비번==valid`라 하나만 맞아도 통과.
 
 실제 Docker에서 재현 결과와 방어책 → **[exploits/03_broken_access_control.md](exploits/03_broken_access_control.md)**
+
+## 4. Cookie 로그인 + Cookie Poisoning — `4_cookie_login/`
+
+로그인 성공 시 `user` 쿠키에 **고정 문자열**(`grape_cookie`)을 심고, 개인페이지는 그 값만 확인.
+→ 비번 없이 `Cookie: user=grape_cookie`만 위조해 보내면 통과. → **[writeup](exploits/04_cookie_poisoning.md)**
+
+## 5·6. 추측 가능한 쿠키값 + Brute Force — `5_cookie_auth/`
+
+쿠키를 `grape_bs`처럼 2글자 접미사로 바꿔 "덜 뻔하게" 했지만, 경우의 수가 676개뿐이라
+전수조사로 뚫린다(틀리면 302, 맞으면 200으로 판별). Python/`curl`로 `grape_bs` 크랙 시연.
+→ **[writeup](exploits/05_bruteforce_cookie.md)** · PoC [06_cookie_buster.py](exploits/06_cookie_buster.py)
