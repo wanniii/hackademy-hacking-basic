@@ -49,8 +49,11 @@ curl -s http://localhost:8000/        # 또는 브라우저에서 http://localho
 - [x] 4. Cookie 로그인 + **Client-side Cookie Poisoning** → [writeup](exploits/04_cookie_poisoning.md)
 - [x] 5. Cookie 인증 (추측 가능한 쿠키값) → [writeup](exploits/05_bruteforce_cookie.md)
 - [x] 6. **Brute Force** (Python PoC) → [06_cookie_buster.py](exploits/06_cookie_buster.py)
-- [ ] 7. Session / Session Hijacking
-- [ ] 8. Database / SQL Injection / 방어
+- [x] 7. Session 로그인 + **Session Hijacking** → [writeup](exploits/07_session_hijacking.md)
+- [x] 8. Database + **SQL Injection** → [writeup](exploits/08_sql_injection.md)
+- [x] 9. **방어**: Prepared Statement (SQLi 차단) → `9_database_secure/`
+
+✅ **Cat Homepage 완료** — 과정의 기본 웹해킹 전 범위(접근제어·쿠키·브루트포스·세션·SQLi + 방어) 실습·커밋 완료.
 
 ---
 
@@ -88,3 +91,15 @@ header / form(username·password·submit) / footer 로 구성된 정적 로그�
 쿠키를 `grape_bs`처럼 2글자 접미사로 바꿔 "덜 뻔하게" 했지만, 경우의 수가 676개뿐이라
 전수조사로 뚫린다(틀리면 302, 맞으면 200으로 판별). Python/`curl`로 `grape_bs` 크랙 시연.
 → **[writeup](exploits/05_bruteforce_cookie.md)** · PoC [06_cookie_buster.py](exploits/06_cookie_buster.py)
+
+## 7. Session 로그인 + Session Hijacking — `7_session_login/`
+
+쿠키엔 랜덤 `PHPSESSID`만 담고 신원은 서버 세션에 보관 → 쿠키 변조/브루트포스 방어됨.
+대신 세션 ID를 탈취하면 그 사람으로 로그인(하이재킹). 훔친 `PHPSESSID` 재사용 시연.
+→ **[writeup](exploits/07_session_hijacking.md)**
+
+## 8·9. SQL Injection + 방어 — `8_database_login/` → `9_database_secure/`
+
+로그인 쿼리에 입력값을 그대로 이어붙여, `grape'--` / `' OR 1=1--` 로 인증 우회.
+→ `9_database_secure`에서 **Prepared Statement**로 동일 payload 전부 차단(정상 로그인은 유지).
+DB는 `init_db.php`로 생성(`.db`는 gitignore). → **[writeup](exploits/08_sql_injection.md)**

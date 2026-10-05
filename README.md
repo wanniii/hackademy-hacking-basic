@@ -23,7 +23,7 @@ GRAPE 동아리 교육용 과정 **Hackademy (basic)** 의 Hacking-Basic 파트 
 ## 진행 현황
 
 - [x] 레포 세팅
-- [ ] 01 Cat Homepage
-- [ ] 02 Graple Story
-- [ ] 03 PhotoDot
-- [ ] 04 Quokka RAT
+- [x] 01 Cat Homepage (웹해킹) — 접근제어·쿠키·브루트포스·세션·SQLi + 방어
+- [ ] 02 Graple Story (리버싱)
+- [ ] 03 PhotoDot (포너블)
+- [ ] 04 Quokka RAT (트로이목마 분석)
