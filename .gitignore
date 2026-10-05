@@ -1,0 +1,13 @@
+# 데이터베이스/런타임 산출물
+*.db
+*.sqlite
+*.sqlite3
+
+# 에디터/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 로그
+*.log
