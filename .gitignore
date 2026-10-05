@@ -20,3 +20,6 @@ Thumbs.db
 *.out
 in.txt
 cmds.gdb
+03-photodot/photoDot
+03-photodot/**/image
+image

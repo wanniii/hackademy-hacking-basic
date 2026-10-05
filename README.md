@@ -12,7 +12,7 @@ GRAPE 동아리 교육용 과정 **Hackademy (basic)** 의 Hacking-Basic 파트 
 |------|------|------|
 | [`01-cat-homepage`](01-cat-homepage/) | 웹해킹 | PHP 고양이 홈페이지를 직접 만들고, Broken Access Control · Cookie Poisoning · Brute Force · Session Hijacking · SQL Injection 실습 및 방어 |
 | [`02-graple-story`](02-graple-story/) | 리버싱 | C로 RPG 게임 제작 → objdump 정적분석 + 바이너리 패치 / gdb 런타임 변조로 게임핵 |
-| `03-photodot` | 포너블 | (예정) |
+| [`03-photodot`](03-photodot/) | 포너블 | C 이미지필터 앱의 스택 버퍼 오버플로우 → ret2win 으로 hidden() 임의 코드 실행 |
 | `04-quokka-rat` | 트로이목마 분석 | (예정) |
 
 ## 환경
@@ -25,5 +25,5 @@ GRAPE 동아리 교육용 과정 **Hackademy (basic)** 의 Hacking-Basic 파트 
 - [x] 레포 세팅
 - [x] 01 Cat Homepage (웹해킹) — 접근제어·쿠키·브루트포스·세션·SQLi + 방어
 - [x] 02 Graple Story (리버싱) — 바이너리 패치 + gdb 런타임 변조로 게임핵
-- [ ] 03 PhotoDot (포너블)
+- [x] 03 PhotoDot (포너블) — 스택 버퍼 오버플로우 ret2win 익스플로잇
 - [ ] 04 Quokka RAT (트로이목마 분석)
